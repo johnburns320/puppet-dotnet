@@ -28,20 +28,9 @@ define dotnet::install::package(
     $source_dir = $package_dir
   }
 
-  if $ensure == 'present' {
-    exec { "install-dotnet-${version}":
-      command   => "& ${source_dir}\\${exe} /q /norestart",
-      provider  => powershell,
-      logoutput => true,
-      unless    => "if ((Get-Item -LiteralPath \'${key}\' -ErrorAction SilentlyContinue).GetValue(\'DisplayVersion\')) { exit 0 }",
-    }
-  } else {
-    exec { "uninstall-dotnet-${version}":
-      command   => "& ${source_dir}\\${exe} /x /q /norestart",
-      provider  => powershell,
-      logoutput => true,
-      unless    => "if ((Get-Item -LiteralPath \'${key}\' -ErrorAction SilentlyContinue).GetValue(\'DisplayVersion\')) { exit 1 }",
-    }
+  package { "Microsoft .NET Framework ${version}":
+    ensure          => $ensure,
+    source          => "${source_dir}\\${exe}",
+    install_options => [ '/q', '/norestart' ],
   }
-
 }
