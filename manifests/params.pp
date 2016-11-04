@@ -35,5 +35,10 @@ class dotnet::params {
       'exe' => 'NDP452-KB2901907-x86-x64-AllOS-ENU.exe',
       'key' => 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{26784146-6E05-3FF9-9335-786C7C0FB5BE}',
     },
+    '4.6.1' => {
+      'url' => 'https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe',
+      'exe' => 'NDP461-KB3102436-x86-x64-AllOS-ENU.exe',
+      'key' => 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{92FB6C44-E685-45AD-9B20-CADF4CABA132} - 1033',
+    },
   }
 }

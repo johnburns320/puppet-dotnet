@@ -37,7 +37,7 @@ define dotnet(
 ) {
 
   validate_re($ensure,['^(present|absent)$'])
-  validate_re($version,['^(3.5|4\.0|4\.5(\.\d)?)$'])
+  validate_re($version,['^(3.5|4\.0|4\.\d(\.\d)?)$'])
 
   include ::dotnet::params
 
@@ -55,7 +55,7 @@ define dotnet(
         default: { $type = 'err' err("dotnet ${version} is not support on this version of windows") }
       }
     }
-    /4\.5(\.\d)?/: {
+    /4\.\d(\.\d)?/: {
       case $::operatingsystemversion {
         /^Windows.(Server)?.?(2008|2012|Vista|7|8.*).?(R2)?.*/: { $type = 'package' }
         default: { $type = 'err' err("dotnet ${version} is not support on this version of windows") }
